@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <!-- Chatbot Icon -->
+    <div class="chatbot-icon" onclick="toggleChatbox()">
+        <img src="{% static 'images/chatbot.gif' %}" alt="Chatbot">
+    </div>
+
+    <!-- Chatbox -->
+    <div class="chat-box-container" id="chat-box-container">
+        <div class="chat-header">Chatbot</div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Votre message..."></textarea>
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>     
+
+    <script>
+        function toggleChatbox() {
+            const chatbox = document.getElementById('chat-box-container');
+            const chatBox = document.getElementById("chat-box");
+            //const welcomeMessage = document.getElementById('chatbot-welcome');
+
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'block';
+               //welcomeMessage.style.display = 'none'; // Cache le message de bienvenue
+
+                 // Vérifier si le message de bienvenue a déjà été affiché
+                if (!chatBox.dataset.welcomeMessage) {
+                    showWelcomeMessage();
+                    chatBox.dataset.welcomeMessage = "true"; // Empêcher l'affichage multiple
+                }
+            } else {
+                chatbox.style.display = 'none';
+               // welcomeMessage.style.display = 'block'; // Réaffiche le message si la fenêtre se ferme
+            }
+        }
+
+        function showWelcomeMessage() {
+            var chatBox = document.getElementById("chat-box");
+            var welcomeMessageDiv = document.createElement("div");
+            welcomeMessageDiv.className = "bot-response";
+            welcomeMessageDiv.innerText = "Bonjour, comment puis-je vous aider aujourd'hui ?";
+            chatBox.appendChild(welcomeMessageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function sendMessage() {
+            var userMessage = document.getElementById('user-input').value;
+            if (userMessage.trim() === '') return;
+
+            var chatBox = document.getElementById("chat-box");
+
+            // Afficher le message de l'utilisateur
+            var userMessageDiv = document.createElement("div");
+            userMessageDiv.className = "user-message";
+            userMessageDiv.innerText = userMessage;
+            chatBox.appendChild(userMessageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Ajouter l'animation "IA en train de taper..."
+            var typingMessage = document.createElement("div");
+            typingMessage.className = "bot-response typing";
+            typingMessage.innerHTML = `<span class="dots"><span>.</span><span>.</span><span>.</span></span>`;
+            chatBox.appendChild(typingMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Envoyer le message au backend
+            $.ajax({
+                url: '/chatbot/',
+                type: 'POST',
+                contentType: 'application/json',
+                headers: { 'X-CSRFToken': csrftoken },
+                data: JSON.stringify({ 'question': userMessage }),
+                success: function(response) {
+                    // Supprimer l'animation "IA en train de taper..."
+                    typingMessage.remove();
+
+                    // Afficher la réponse du chatbot
+                    var botMessageDiv = document.createElement("div");
+                    botMessageDiv.className = "bot-response";
+                    botMessageDiv.innerText = response.response;
+                    chatBox.appendChild(botMessageDiv);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                },
+                error: function() {
+                    typingMessage.remove();
+                    var errorMessageDiv = document.createElement("div");
+                    errorMessageDiv.className = "bot-response";
+                    errorMessageDiv.innerText = "Désolé, une erreur s'est produite.";
+                    chatBox.appendChild(errorMessageDiv);
+                }
+            });
+
+            // Vider l'input après l'envoi du message
+            document.getElementById('user-input').value = '';
+        }
+
+        // enlever cette partie du code parce qu'elle ne sert à rien. Et Enlever le Crsf exempt.
+        //si les question sont envoyé bien en json el sérializer va bien les recevoir et plus besoin de ceci.
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+        //Envoie du message en cliquant sur 'Entrer'
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) { 
+                event.preventDefault(); // Empêche le saut de ligne
+                sendMessage();
+            }
+        });
+        
+    </script>
+</body>
+</html>

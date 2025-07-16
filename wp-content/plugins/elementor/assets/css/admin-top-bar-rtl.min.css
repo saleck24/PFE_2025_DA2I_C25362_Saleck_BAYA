@@ -1,0 +1,140 @@
+: -1px;
+  flex-direction: row-reverse;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: 3px;
+  border-end-end-radius: 0;
+  overflow: hidden;
+}
+.elementor-editor-widget-settings .elementor-editor-element-setting {
+  background-color: var(--e-p-border-widget);
+}
+.elementor-editor-widget-settings .elementor-editor-element-setting:hover {
+  background-color: var(--e-p-border-widget-hover);
+}
+
+.e-widget-pro-promotion {
+  border: 2px dashed var(--e-a-border-color-bold);
+  background-color: var(--e-a-color-white);
+  padding: 20px;
+}
+.e-widget-pro-promotion .e-container {
+  max-width: 600px;
+  margin: auto;
+}
+.e-widget-pro-promotion .e-badge {
+  border: 1px solid var(--e-a-color-accent);
+  color: var(--e-a-color-accent);
+  background: var(--e-a-color-white);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 0.8em;
+}
+.e-widget-pro-promotion p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  text-align: center;
+}
+.e-widget-pro-promotion p img {
+  display: block;
+  margin: 0 auto 20px;
+}
+.e-widget-pro-promotion .e-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.e-widget-pro-promotion .e-btn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 8px 16px;
+  border-radius: var(--e-a-border-radius);
+  background-color: var(--e-a-btn-bg-accent);
+  color: var(--e-a-btn-color-invert);
+  transition: var(--e-a-transition-hover);
+}
+.e-widget-pro-promotion .e-btn:hover, .e-widget-pro-promotion .e-btn:focus {
+  background-color: var(--e-a-btn-bg-accent-hover);
+  color: var(--e-a-btn-color-invert);
+}
+.e-widget-pro-promotion .e-btn:active {
+  background-color: var(--e-a-btn-bg-accent-active);
+}
+.e-widget-pro-promotion .e-btn.e-btn-txt {
+  background: transparent;
+  color: var(--e-a-color-txt);
+}
+.e-widget-pro-promotion .e-btn.e-btn-txt:hover, .e-widget-pro-promotion .e-btn.e-btn-txt:focus {
+  background: var(--e-a-bg-hover);
+  color: var(--e-a-color-txt-hover);
+}
+
+.elementor-section > .elementor-element-overlay,
+.e-con > .elementor-element-overlay {
+  right: 0;
+  bottom: 0;
+}
+.elementor-section > .elementor-element-overlay:after,
+.e-con > .elementor-element-overlay:after {
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  outline: 1px solid var(--e-p-border-con);
+  animation: section-outline 0.75s;
+}
+.elementor-section:hover > .elementor-element-overlay:after,
+.e-con:hover > .elementor-element-overlay:after {
+  content: "";
+}
+.elementor-section.elementor-element-editable > .elementor-element-overlay:after,
+.e-con.elementor-element-editable > .elementor-element-overlay:after {
+  content: "";
+  outline-width: 2px;
+}
+
+.e-con .e-con-inner .e-con > .elementor-element-overlay:after {
+  outline: 1px dashed var(--e-p-border-con-in);
+}
+.e-con .e-con-inner .e-con.elementor-element-editable > .elementor-element-overlay:after {
+  outline: 2px solid var(--e-p-border-con-in);
+}
+.e-con .elementor-empty-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+}
+.e-con .elementor-empty-view .elementor-first-add {
+  width: auto;
+  height: auto;
+  inset: 0;
+}
+.e-con:not(.e-grid) .elementor-empty-view {
+  min-height: var(--min-height, 100px);
+}
+.e-con.e-grid .elementor-empty-view {
+  min-width: 100px;
+}
+.e-con .elementor-widget-placeholder {
+  --size: 10px;
+  --margin-start: calc( -1 * var( --size ) );
+  --margin-end: calc( -2 * var( --size ) );
+  flex-shrink: 0;
+  align-self: stretch;
+  z-index: 1;
+  pointer-events: none;
+}
+.e-con.e-con--row > .elementor-widget-placeholder, .e-con.e-con--row > .e-con-inner > .elementor-widget-placeholder {
+  position: relative;
+  z-index: 9999;
+  width: var(--size);
+  margin-inline-start: var(--margin-start);
+  height: auto;
+  min-height: 100%;
+  animation-name: dnd-placeholder-widget-vertical;
+  animation-fill-mode: both;
+}
+.e-con.e-con--row[data-nesting-level]:not([data-nesting-level="0"]) > .elementor-widget-placeholder, .e-con.e-con--row[data-nesting-level]:not([da

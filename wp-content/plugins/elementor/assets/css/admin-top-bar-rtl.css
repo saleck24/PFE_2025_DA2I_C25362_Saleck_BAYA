@@ -1,0 +1,92 @@
+.eicon-handle,
+.elementor-editor-e-flexbox-settings i.eicon-handle,
+.elementor-editor-e-div-block-settings i.eicon-handle {
+  font-size: 16px;
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:hover,
+.elementor-editor-container-settings .elementor-editor-element-setting:hover,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:hover,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:hover {
+  background-color: var(--e-p-border-section-hover);
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:first-child,
+.elementor-editor-container-settings .elementor-editor-element-setting:first-child,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:first-child,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:first-child {
+  border-start-start-radius: 5px;
+  border-start-end-radius: 0;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:first-child:before,
+.elementor-editor-container-settings .elementor-editor-element-setting:first-child:before,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:first-child:before,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:first-child:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: calc(100% - 1px);
+  border-block-start: 22px solid transparent;
+  border-block-end: 0 none transparent;
+  border-inline-start: 0 none transparent;
+  border-inline-end: 12px solid var(--e-p-border-section);
+  transition: var(--e-a-transition-hover);
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:first-child:hover:before,
+.elementor-editor-container-settings .elementor-editor-element-setting:first-child:hover:before,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:first-child:hover:before,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:first-child:hover:before {
+  border-inline-end-color: var(--e-p-border-section-hover);
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:last-child,
+.elementor-editor-container-settings .elementor-editor-element-setting:last-child,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:last-child,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:last-child {
+  border-start-start-radius: 0;
+  border-start-end-radius: 5px;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:last-child:after,
+.elementor-editor-container-settings .elementor-editor-element-setting:last-child:after,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:last-child:after,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:last-child:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: calc(100% - 1px);
+  border-block-start: 22px solid transparent;
+  border-block-end: 0 none transparent;
+  border-inline-start: 12px solid var(--e-p-border-section);
+  border-inline-end: 0 none transparent;
+  transition: var(--e-a-transition-hover);
+}
+.elementor-editor-section-settings .elementor-editor-element-setting:last-child:hover:after,
+.elementor-editor-container-settings .elementor-editor-element-setting:last-child:hover:after,
+.elementor-editor-e-flexbox-settings .elementor-editor-element-setting:last-child:hover:after,
+.elementor-editor-e-div-block-settings .elementor-editor-element-setting:last-child:hover:after {
+  border-inline-start-color: var(--e-p-border-section-hover);
+}
+
+.e-handles-inside > .elementor-element-overlay > .elementor-editor-element-settings {
+  transform: translateX(-50%);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: 5px;
+  border-end-end-radius: 5px;
+}
+.e-handles-inside > .elementor-element-overlay > .elementor-editor-element-settings .elementor-editor-element-setting:first-child {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: 5px;
+  border-end-end-radius: 0;
+}
+.e-handles-inside > .elementor-element-overlay > .elementor-editor-element-settings .elementor-editor-element-setting:first-child:before {
+  top: 0;
+  border-block-start: 0 none transparent;
+  border-block-end: 22px solid transparent;
+  border-inline-start: 0 none transparent;
+  border-inline-end: 12px solid var(--e-p-border-section);
+  transition: var(--e-a-transition-hover);
+}
+.e-handles-inside > .elementor-element-overlay > .elementor-editor-element-settings .elementor-edi

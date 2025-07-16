@@ -1,0 +1,56 @@
+alc(var(--margin-start) + var(--margin-end));
+}
+.e-con.e-con--row[data-nesting-level]:not([data-nesting-level="0"]) > :not(.elementor-element) + .elementor-widget-placeholder, .e-con.e-con--row[data-nesting-level]:not([data-nesting-level="0"]) > .e-con-inner > :not(.elementor-element) + .elementor-widget-placeholder {
+  margin-inline-end: var(--margin-end);
+  margin-inline-start: var(--margin-start);
+}
+.e-con.e-grid.e-con--row .elementor-widget-placeholder.e-dragging-right, .e-con.e-grid.e-con--row .elementor-widget-placeholder.e-dragging-left, .e-con.e-grid.e-con--row > .e-con-inner .elementor-widget-placeholder.e-dragging-right, .e-con.e-grid.e-con--row > .e-con-inner .elementor-widget-placeholder.e-dragging-left {
+  position: absolute;
+  width: var(--size);
+  height: 100%;
+  top: 0;
+  animation: grow-in-width 0.15s forwards;
+}
+.e-con.e-grid.e-con--row .elementor-widget-placeholder.e-dragging-right, .e-con.e-grid.e-con--row > .e-con-inner .elementor-widget-placeholder.e-dragging-right {
+  right: 0;
+  left: auto;
+}
+.e-con.e-grid.e-con--row .elementor-widget-placeholder.e-dragging-left, .e-con.e-grid.e-con--row > .e-con-inner .elementor-widget-placeholder.e-dragging-left {
+  left: 0;
+  right: auto;
+}
+.e-con.e-con--column > .elementor-widget-placeholder, .e-con.e-con--column > .e-con-inner > .elementor-widget-placeholder {
+  height: var(--size);
+  margin-block-start: var(--margin-start);
+  margin-block-end: var(--margin-end);
+  animation-name: dnd-placeholder-widget-horizontal;
+}
+.e-con.e-con--column > .elementor-widget-placeholder:nth-last-child(2) {
+  margin-block-start: calc(2 * var(--margin-start));
+  --margin-end: 0;
+}
+.e-con.e-con--column > .e-con-inner > .elementor-widget-placeholder:last-child {
+  --margin-end: 0;
+}
+.e-con .elementor-sortable-helper {
+  height: 84px;
+  width: 125px;
+  z-index: -1;
+}
+.e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting {
+  position: relative;
+  background-color: var(--e-p-border-con-in);
+}
+.e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting:hover, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting:hover, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting:hover {
+  background-color: var(--e-p-border-con-in-hover);
+}
+.e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-add, .e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-edit + .elementor-editor-element-remove, .e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting:first-child::before, .e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting:last-child::after, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-add, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-edit + .elementor-editor-element-remove, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting:first-child::before, .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting:last-child::after, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-add, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting.elementor-editor-element-edit + .elementor-editor-element-remove, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting:first-child::before, .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting:last-child::after {
+  display: none;
+}
+.e-con > .e-con > .elementor-element-overlay .elementor-editor-element-setting:not(.elementor-editor-element-edit), .e-con-inner > .e-con > .elementor-element-overlay .elementor-editor-element-setting:not(.elementor-editor-element-edit), .elementor-widget .e-con > .elementor-element-overlay .elementor-editor-element-setting:not(.elementor-editor-element-edit) {
+  margin-inline-start: -25px;
+  z-index: -1;
+  transition: 0.3s all;
+  will-change: margin-inline-start;
+}
+.e-con > .e-con > .elementor-element-overlay > .elementor-editor-element-settings:hover > :is(.elementor-editor-element-duplicate, .elementor-editor-element-remove), .e-con-inner > .e-con > .elementor-element-overlay > .elementor-editor-element
